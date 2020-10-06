@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Shadow Codes</title>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+          crossorigin=""></script>
+</head>
+
+<body>
+<main>
+  <h2>Form for convert your lat and lng to words</h2>
+  <form>
+    <div style="display: flex;">
+      <div style="margin-left: 16px">
+        <input type="text" placeholder="Enter the words" id="words">
+      </div>
+
+      <div>
+        <input type="button" value="Submit" onclick="decodeWord()">
+      </div>
+    </div>
+  </form>
+  <div id="mapid" style="width: 600px; height: 400px;"></div>
+</main>
+<script src="words-db.js"></script>
+<script src="engine.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>
