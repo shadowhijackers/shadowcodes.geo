@@ -7,6 +7,8 @@ my own program. you can replace words instead auto generates words.
   > In this program i am just using 4 decimal part of lat and long. totally
  001.0000, 001.0000. 
 
+# DEMO
+  [CLICK HERE](https://shadowhijackers.github.io/shadowcodes.geo/)
 # How it works.
   Its just like number sytem binary, octo and hex but here
 we are using base is 10000 by default(depends on how much words in WORD_DB).
