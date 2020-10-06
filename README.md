@@ -9,7 +9,7 @@ my own program. you can replace words instead auto generates words.
 
 # How it works.
   Its just like number sytem binary, octo and hex but here
-we are using base is 1000 by default(depends on how much words in WORD_DB).
+we are using base is 10000 by default(depends on how much words in WORD_DB).
 
 # Code explantion
   That you can see it in the `engine.js`.
