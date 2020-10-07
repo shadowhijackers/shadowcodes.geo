@@ -26,9 +26,9 @@ function encodeLatLngToWords(latlng) {
 // 130 685 802 484 = 1000P3*130 + 1000P2*685 + 1000P1*802 + 1000P0*484
 // 2 484
 // 130 685 80
-// 80 > 180 => 80 - 360
+// 18< 80 < 360 => 180 - 80
 // 130 685
-// 130 > 90 => 13 - 180
+// 13 > 90 => 90 - 13
 // 13 0685, 80 2484
 function decodeWordsToLatLng(wordsList) {
 	const latlng = {lat: 0.0, lng: 0.0};
@@ -45,7 +45,7 @@ function decodeWordsToLatLng(wordsList) {
 
 function convertLat(lat) {
 	if (lat[0] < 0) {
-		lat[0] = 180 - (-1 * lat[0]);
+		lat[0] = 90 + (-1 * lat[0]);
 	}
 
 	return lat;
@@ -53,7 +53,7 @@ function convertLat(lat) {
 
 function convertLng(lng) {
 	if (lng[0] < 0) {
-		lng[0] = 360 + (-1 * lng[0]);
+		lng[0] = 180 + (-1 * lng[0]);
 	}
 
 	return lng;
@@ -103,10 +103,10 @@ function convertLngFromWordsIndexes(latLngNos, wordsList) {
 	const lngMintSec = latLngNos.substring(latLngNos.length - DECIMAL_LENTH, latLngNos.length);
 	latLngNos = latLngNos.substring(0, latLngNos.length - DECIMAL_LENTH);
 
-	const dirtyLng = +latLngNos.substring(latLngNos.length - 2, latLngNos.length);
-	if (dirtyLng > 180) {
-		lng = [latLngNos.substring(latLngNos.length - 3, latLngNos.length) - 360, lngMintSec].join('.');
-		latLngNos = latLngNos.substring(0, latLngNos.length - wordsList.length - 3)
+	const dirtyLng = +latLngNos.substring(latLngNos.length - 3, latLngNos.length);
+	if (dirtyLng > 180 && dirtyLng <= 360) {
+		lng = [180 - latLngNos.substring(latLngNos.length - 3, latLngNos.length), lngMintSec].join('.');
+		latLngNos = latLngNos.substring(0, latLngNos.length - 3)
 	} else {
 		lng = [latLngNos.substring(latLngNos.length - 2, latLngNos.length), lngMintSec].join('.');
 		latLngNos = latLngNos.substring(0, latLngNos.length - 2);
@@ -121,7 +121,7 @@ function convertLatFromWordsIndexes(latLngNos) {
 	latLngNos = +latLngNos.substring(0, latLngNos.length - DECIMAL_LENTH);
 
 	if (latLngNos > 90) {
-		lat = [latLngNos - 180, latMinSec].join('.');
+		lat = [90 - latLngNos, latMinSec].join('.');
 	} else {
 		lat = [latLngNos, latMinSec].join('.');
 	}
