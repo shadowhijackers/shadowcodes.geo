@@ -108,8 +108,9 @@ function convertLngFromWordsIndexes(latLngNos, wordsList) {
 		lng = [180 - latLngNos.substring(latLngNos.length - 3, latLngNos.length), lngMintSec].join('.');
 		latLngNos = latLngNos.substring(0, latLngNos.length - 3)
 	} else {
-		lng = [latLngNos.substring(latLngNos.length - 2, latLngNos.length), lngMintSec].join('.');
-		latLngNos = latLngNos.substring(0, latLngNos.length - 2);
+		let lngDigitLen =  dirtyLng >99 && dirtyLng < 180 ? 3: 2;
+		lng = [latLngNos.substring(latLngNos.length - lngDigitLen, latLngNos.length), lngMintSec].join('.');
+		latLngNos = latLngNos.substring(0, latLngNos.length - lngDigitLen);
 	}
 
 	return {tmpLng: lng, tmpLatLngNos: latLngNos}
