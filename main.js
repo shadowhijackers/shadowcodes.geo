@@ -19,7 +19,7 @@ function onMapClick(e) {
 	clearExistingMarker();
 	popup
 		.setLatLng(e.latlng)
-		.setContent("<b>Geocode:</b>"+e.latlng.toString()+"<br />"+encodeLatLngToWords(e.latlng)+"")
+		.setContent(""+encodeLatLngToWords(e.latlng)+"")
 		.openOn(mymap);
 }
 
